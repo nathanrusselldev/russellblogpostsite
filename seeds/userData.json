@@ -1,0 +1,12 @@
+[
+    {
+        "name": "letsgetintoit",
+        "email": "test@email.com", 
+        "password": "abcdefg"
+    },
+    {
+        "name": "the_one_true_king",
+        "email": "yourself@email.com",
+        "password": "1234567"
+    }
+]
