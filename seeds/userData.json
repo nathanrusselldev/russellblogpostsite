@@ -1,10 +1,12 @@
 [
     {
+        "id": 1,
         "name": "letsgetintoit",
         "email": "test@email.com", 
         "password": "abcdefg"
     },
     {
+        "id": 2,
         "name": "the_one_true_king",
         "email": "yourself@email.com",
         "password": "1234567"

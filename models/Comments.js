@@ -23,8 +23,8 @@ Comments.init(
         sequelize,
         timestamps: true,
         freezeTableName: true,
+        underscored: true,
         modelName: 'comments',
-
     });
 
 module.exports = Comments;

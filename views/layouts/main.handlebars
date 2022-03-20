@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
   <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
+  
 </head>
-
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-     This is the main landing page.
-    </h1>
-    <!-- Only display the logout button if the user is logged in -->
+  <header>
+  <h1>Tech Resources</h1>
+  <nav>
 
-  <main class="container container-fluid mt-5">
+    <section id='nav_links'>
+      <a class ='nav_btn' href="/">Home</a>
+  </section>
+
+  <section id="navigation-account">
+      {{#if logged_in}}
+      <a href="/userprofile" class="nav-btn" id="userProf">Profile</a>
+      <a href="/logout" class="nav-btn" id="logout">LogOut</button>
+      {{else}}
+      <a href="/login" class="nav-btn">Log In</a>
+      {{/if}}
+      </section>
+  </nav>
+
+</header>
 
   {{{body}}}
 
@@ -25,9 +37,10 @@
   </footer>
 
   <!-- Only include the logout script if the user is logged in -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+{{#if logged_in}}
+            <script src="/js/logout.js"></script>
+            <script src="/js/userProfile.js"></script>
+{{/if}}
 </body>
 
 </html>
