@@ -1,8 +1,7 @@
-<section class="blogPost">
-
-    <p>I am pulling in this helper.</p>
-    
-    <p>Blog Title: </p>
-    
-
-</section>
+<ul id="postings">
+    {{#each posts as |post|}}
+    <li>
+        {{post.blog_title}} <span>By:</span> {{post.user.name}}<br> {{post.blog_content}} <br> 
+    </li>
+    {{/each}}
+</ul>

@@ -4,28 +4,30 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/', async (req, res) => {
-  res.render('homepage', {
-    logged_in:req.session.logged_in
-  });
+  try {
+    const allPosts = await Blog_posts.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
+    console.log(allPosts)
+    const posts = allPosts.map((posts) => posts.get({plain: true}));
+
+    res.render('homepage',  {
+      posts,
+      logged_in:req.session.logged_in
+    });
+
+  } catch(err){
+    console.log(err);
+    res.status(500).json(err)
+  }
 });
 
-// router.get('/', async (req, res) => {
-//   try {
-//       const blogPostContent = await Blog_posts.findAll({
-       
-//     });
 
-//     const posts = blogPostContent.map((postdata) =>
-//       postdata.get({ plain: true })
-      
-//     );
-//     res.render('homepage', posts)
-//     logged_in:req.session.logged_in
-//     console.log(req.session)
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage

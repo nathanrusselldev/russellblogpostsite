@@ -7,10 +7,10 @@ class Blog_posts extends Model{}
 Blog_posts.init(
     {
        id: {
-           type: DataTypes.UUID,
-           allowNull: false,
-           defaultValue: UUIDV4,
-           primaryKey: true
+           type: DataTypes.INTEGER,
+           allowNull: false,           
+           primaryKey: true,
+           autoIncrement: true
         },
         blog_title: {
             type: DataTypes.TEXT
@@ -18,6 +18,13 @@ Blog_posts.init(
         blog_content: {
             type: DataTypes.TEXT
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        }
         },
     {
         sequelize,

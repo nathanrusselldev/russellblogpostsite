@@ -11,7 +11,7 @@ User.hasMany(Comments, {
     foreignkey: 'user_id'
 })
 
-Blog_posts.hasOne(User, {
+Blog_posts.belongsTo(User, {
     foreignKey: 'user_id'
 })
 

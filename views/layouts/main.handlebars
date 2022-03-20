@@ -15,27 +15,25 @@
 
     <section id='nav_links'>
       <a class ='nav_btn' href="/">Home</a>
-  </section>
 
-  <section id="navigation-account">
-      {{#if logged_in}}
-      <a href="/userprofile" class="nav-btn" id="userProf">Profile</a>
-      <a href="/logout" class="nav-btn" id="logout">LogOut</button>
-      {{else}}
-      <a href="/login" class="nav-btn">Log In</a>
-      {{/if}}
+      <section id="navigation-account">
+        {{#if logged_in}}
+        <a href="/userprofile" class="nav-btn" id="userProf">Profile</a>
+        <a href="/createpost" class="nav-btn" id="createPost">Create Post</a>
+        <a href="/logout" class="nav-btn" id="logout">LogOut</button>
+        {{else}}
+        <a href="/login" class="nav-btn">Log In</a>
+        {{/if}}
       </section>
+    </section>
   </nav>
 
 </header>
 
   {{{body}}}
 
-  </main>
-  <footer>
-      
-  </footer>
-
+</main>
+ 
   <!-- Only include the logout script if the user is logged in -->
 {{#if logged_in}}
             <script src="/js/logout.js"></script>
