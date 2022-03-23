@@ -44,11 +44,10 @@ router.get('/post/:id', async (req,res) => {
               },
           ],
       });
-      const post = postData.get({ plain:true });
+      const renderData = postData.get({ plain:true });
       // res.status(200).json(post)
       res.render('post', {
-          post,
-          user_id: req.session.user_id,
+          renderData,
           logged_in: req.session.logged_in,
       });
     
@@ -85,7 +84,5 @@ router.get('/createpost', (req,res) => {
     res.status(500).json(err)
   }
 });
-
-
 
 module.exports = router;

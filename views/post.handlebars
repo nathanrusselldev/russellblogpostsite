@@ -1,22 +1,31 @@
-
 <div class="card">
-    <h4 class="card-title">{{post.blog_title}}</h4>
+    <h4 class="card-title">{{renderData.blog_title}}</h4>
         <div class="card-body">
-            {{post.blog_content}}
+            {{renderData.blog_content}}
         </div>
 </div>
-<div class="container" "commentForm">
-
+<div class="container"id="commentForm">
 {{> commentsform}}
-
 </div>
 
-<div class="container" "comments"></div>
+<div class="container comments"></div>
+    <h4>Comments </h4>
+    {{#each renderData.comments as |comment|}}
+   
+    <div class="card">    
+        <div class="card-title">
 
-{{#each comments as |comment|}}
+        </div>    
+             <div class="card-body">
+            {{comment.comment_body}}
+            </div>
+        <div class="card-subtitle">
+            {{comment.name}}
+        </div>
+    </div>
+    {{/each}}
+   
 
-<h4>{{comment.comment_body}}</h4>
-
- </div>    
-{{/each}}
+</div>    
+   
 <script src="/js/createComment.js"></script>
