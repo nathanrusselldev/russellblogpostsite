@@ -1,22 +1,26 @@
 const router = require('express').Router();
-const { User, Blog_posts } = require('../models');
+const { User, Post, Comment, } = require('../models');
 const withAuth = require('../utils/auth');
 
 
 router.get('/', async (req, res) => {
   try {
-    const allPosts = await Blog_posts.findAll({
+    const allPosts = await Post.findAll({
+      order: [
+        ['createdAt', 'DESC']
+      ],
       include: [
         {
           model: User,
           attributes: ['name'],
         },
-      ],
+        {
+          model: Comment
+        }],
     });
-    console.log(allPosts)
     const posts = allPosts.map((posts) => posts.get({plain: true}));
-
-    res.render('homepage',  {
+    // res.status(200).json(posts)
+    res.render('homepage', {
       posts,
       logged_in:req.session.logged_in
     });
@@ -27,7 +31,32 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+router.get('/post/:id', async (req,res) => {
+  try {
+      const postData = await Post.findByPk(req.params.id, {
+          include: [
+              {
+                  model: User,
+                  attributes: ['name'],
+              },
+              {
+                  model: Comment,
+              },
+          ],
+      });
+      const post = postData.get({ plain:true });
+      // res.status(200).json(post)
+      res.render('post', {
+          post,
+          user_id: req.session.user_id,
+          logged_in: req.session.logged_in,
+      });
+    
+  } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+  }
+});
 
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
@@ -46,5 +75,17 @@ router.get('/register', (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/createpost', (req,res) => {
+  try{
+    res.render('createpost', {
+      logged_in:req.session.logged_in
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+
+
 
 module.exports = router;

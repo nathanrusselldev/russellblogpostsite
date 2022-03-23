@@ -1,1 +1,22 @@
-<h1>This is my create post page.</h1>
+<article class="newPost">
+    <div id="newPostForm">
+        <div id="formHeading">
+            <h2>Create a new post here!</h2>
+        </div>
+        <div id="formMain">
+            <form id="formContent">
+                <div>
+                <label for="post_title">Title</label>
+                <br>
+                <input type="text" id="postTitle" /> 
+                </div>
+                <br>
+                <label for="post_content">Content</label> <br>
+                <textarea name="blogpost" id="postContent" cols="50" rows="25"></textarea>
+                <br>
+                <button type="submit" id="postSubmit">Submit</button>
+            </form>
+        </div>
+    </div>
+</article>
+<script src="/js/createPost.js"></script>

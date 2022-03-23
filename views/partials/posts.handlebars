@@ -1,7 +1,13 @@
-<ul id="postings">
+<ul class="list_group" id="postings">
     {{#each posts as |post|}}
-    <li>
-        {{post.blog_title}} <span>By:</span> {{post.user.name}}<br> {{post.blog_content}} <br> 
+    <div class="card">
+    <a id="goToPost" href="/post/{{post.id}}">
+    <li class="list-group-item">
+    <h2 class="card_title">{{post.blog_title}}</h2>
+    {{post.blog_content}}
+    </div>
     </li>
+    </a>
     {{/each}}
 </ul>
+
