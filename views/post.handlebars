@@ -1,5 +1,5 @@
 <div class="card">
-    <h4 class="card-title">{{renderData.blog_title}}</h4>
+    <h4 class="card-title">{{renderData.blog_title}} </h4>
         <div class="card-body">
             {{renderData.blog_content}}
         </div>
@@ -20,7 +20,7 @@
             {{comment.comment_body}}
             </div>
         <div class="card-subtitle">
-            {{comment.name}}
+            {{format_date comment.createdAt}} By: {{comment.user.name}}
         </div>
     </div>
     {{/each}}
